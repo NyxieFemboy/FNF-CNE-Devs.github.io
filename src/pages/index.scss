@@ -183,7 +183,7 @@ div.compact {
     .card-content {
         text-align: left;
         padding: 10px;
-        height: 90px;
+        height: 100px;
         position: relative;
     }
 
@@ -222,8 +222,12 @@ div.compact {
     display: none;
 }
 
+.sort-button:not(.selected) {
+    filter: brightness(70%);
+}
+
 .sort-button.selected {
-    background: #7c39ae;
+    background: var(--primary-color);
 }
 
 .last-updated {

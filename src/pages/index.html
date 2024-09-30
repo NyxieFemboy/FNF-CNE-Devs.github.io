@@ -37,14 +37,7 @@
 	</div>
 	<div class="container">
 		<div class="content">
-			<div class="logo-container">
-				<div class="logo">
-					<img class="logo-bg" src="img/logo-cne.png" alt="Codename Engine Logo">
-					<img class="question" src="img/question.png">
-				</div>
-			</div>
-			<h2 style="margin-bottom: 0.3em;">Codename Engine</h2>
-			<div class="compact"><sub>seriously we need an actual logo for this</sub></div>
+			<img src="root/img/codename-animated.gif" style="margin-top: 1em"><br>
 
 			<a href="/api-docs/" class="default-button">API</a>
 			<a href="/wiki/" class="default-button">Wiki</a>
@@ -140,7 +133,7 @@
 			<div class="featured-mods">
 				<!-- <img class="sparkles" src="https://i.gifer.com/XZ5V.gif"> -->
 				{{#mods}}
-				<div class="featured-mod {{#tags}}{{.}} {{/tags}}" data-time="{{lastUpdated}}" data-author="{{author}}" data-source="{{source}}" data-version="{{version}}" data-tags="{{tagsRaw}}">
+				<div class="featured-mod{{#tags}} {{.}}{{/tags}}" data-time="{{lastUpdated}}" data-author="{{author}}" data-source="{{source}}" data-version="{{version}}" data-tags="{{tagsRaw}}">
 					<a href="{{link}}">
 						<img src="{{image}}" />
 						<div class="card-content">

@@ -1,0 +1,11 @@
+<header>
+	<a href="/">
+		<img src="/img/logo-header.png" style="width: 50px;" alt="Codename Logo" />
+		<h2 class="mobile">CNE</h2>
+		<h2 class="desktop">Codename Engine</h2>
+	</a>
+	<h2>::api.currentPageName::</h2>
+	<div>
+		<a href="/api-docs/">API</a><a href="/wiki/">Wiki</a>
+	</div>
+</header>

@@ -5,8 +5,7 @@ var jsdom = require("jsdom");
 var fs = require('fs');
 var hljs = require('highlight.js');
 
-var { fixHtmlRefs, copyDir } = require("../utils.js");
-const { warn } = require('console');
+var { fixHtmlRefs, copyDir, parseTemplate } = require("../utils.js");
 
 var header = fs.readFileSync("./src/pages/templates/header.html", 'utf8')
 
@@ -88,16 +87,7 @@ function buildHtml(_pageDir, _exportPath) {
         warnings: warnings
     };
 
-    let html = templatePage;
-    let old;
-    do {
-        old = html;
-        html = Mustache.render(html, vars, null, {
-            escape: function(text) {
-                return text;
-            }
-        });
-    } while(html != old);
+    let html = parseTemplate(templatePage, vars);
 
     var dom = fixHtmlRefs(html, pageDir, _pageDir);
 

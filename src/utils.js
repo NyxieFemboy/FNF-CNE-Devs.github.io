@@ -1,4 +1,5 @@
 var jsdom = require("jsdom");
+var Mustache = require('mustache');
 var path = require("path");
 var hljs = require('highlight.js');
 var fs = require('fs');
@@ -125,6 +126,20 @@ function copyDir(src, dest) {
 	}
 }
 
+function parseTemplate(html, vars) {
+	let old;
+	do {
+		old = html;
+		html = Mustache.render(html, vars, null, {
+			escape: function(text) {
+				return text;
+			}
+		});
+	} while(html != old);
+
+	return html;
+}
+
 function compileSass(file, dest) {
 	var result = sass.compileString(fs.readFileSync(file, 'utf8'), {
 		importers: [{
@@ -158,5 +173,6 @@ module.exports = {
 	fixPath: fixPath,
 	fixHtmlRefs: fixHtmlRefs,
 	copyDir: copyDir,
+	parseTemplate: parseTemplate,
 	compileSass: compileSass,
 }

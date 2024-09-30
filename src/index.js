@@ -1,13 +1,29 @@
 var fs = require('fs');
 var { spawn } = require('child_process');
 
+var isFullBuild = process.argv.includes('--full');
+process.argv = process.argv.filter(arg => arg != '--full');
+
 var isWatch = process.argv.includes('--watch');
 process.argv = process.argv.filter(arg => arg != '--watch');
+
+var firstRun = true;
 
 function startChild() {
 	console.log('Starting build process...');
 
 	var args = process.argv.slice(2);
+
+	if(isFullBuild) {
+		args.push('--full');
+	}
+	if(isWatch) {
+		args.push('--watch');
+	}
+	if(firstRun) {
+		args.push('--first-run');
+		firstRun = false;
+	}
 
 	child = spawn('node', ['src/build.js', ...args], {
 		stdio: 'inherit'
